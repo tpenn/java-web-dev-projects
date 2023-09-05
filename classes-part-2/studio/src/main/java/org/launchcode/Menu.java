@@ -1,18 +1,28 @@
 package org.launchcode;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
 
+import static java.time.LocalTime.now;
+
 public class Menu {
-    private Date lastUpdated;
+    private LocalDate lastUpdated;
     private ArrayList<MenuItem> items;
 
-    public Menu(Date d, ArrayList<MenuItem> i) {
+    public Menu() {
+        this.setLastUpdated();
+        this.items = new ArrayList<MenuItem>();
+    }
+    public Menu(LocalDate d, ArrayList<MenuItem> i) {
         this.lastUpdated = d;
         this.items = i;
     }
 
-    public void setLastUpdated(Date lastUpdated) {
+    public void setLastUpdated() {
+        this.lastUpdated = LocalDate.now();
+    }
+    public void setLastUpdated(LocalDate lastUpdated) {
         this.lastUpdated = lastUpdated;
     }
 
@@ -20,13 +30,33 @@ public class Menu {
         this.items = items;
     }
 
-    public Date getLastUpdated() {
+    public LocalDate getLastUpdated() {
         return lastUpdated;
     }
 
     public ArrayList<MenuItem> getItems() {
         return items;
     }
+
+    public boolean addMenuItem(MenuItem item) {
+        if (items.contains(item)) {
+            return false;
+        }
+
+        items.add(item);
+        setLastUpdated();
+        return true;
+    }
+    public void removeMenuItem(MenuItem item) {
+        items.remove(item);
+        setLastUpdated();
+    }
+//    public void removeMenuItem(String description) {
+//    }
+
+    @Override
+    public String toString() {
+        return "Menu (Last Updated on " + lastUpdated + ")\n" +
+                String.join("\n", items.stream().map(Object::toString).toArray(String[]::new));
+    }
 }
-
-
