@@ -18,13 +18,22 @@ public class MenuItem {
     public void setPrice(double price) {
         this.price = price;
     }
+    public double getPrice() {
+        return this.price;
+    }
 
     public void setDescription(String description) {
         this.description = description;
     }
+    public String getDescription() {
+        return this.description;
+    }
 
     public void setCategory(String category) {
         this.category = category;
+    }
+    public String getCategory() {
+        return this.category;
     }
 
     public void setNew(boolean aNew) {

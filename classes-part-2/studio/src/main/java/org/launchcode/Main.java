@@ -24,7 +24,7 @@ public class Main {
         System.out.println("\nItem\n----");
         System.out.println(item1);
 
-        ourMenu.removeMenuItem(item1);
+        ourMenu.removeMenuItem("Coffee");
         System.out.println("Menu\n----");
         System.out.println(ourMenu);
     }

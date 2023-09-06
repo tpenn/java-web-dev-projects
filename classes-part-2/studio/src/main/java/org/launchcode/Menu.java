@@ -3,6 +3,7 @@ package org.launchcode;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.function.Predicate;
 
 import static java.time.LocalTime.now;
 
@@ -51,8 +52,12 @@ public class Menu {
         items.remove(item);
         setLastUpdated();
     }
-//    public void removeMenuItem(String description) {
-//    }
+    public void removeMenuItem(String description) {
+        Predicate <MenuItem> filter = item->item.getDescription().equals(description);
+        if (items.removeIf(filter)) {
+            setLastUpdated();
+        }
+    }
 
     @Override
     public String toString() {
